@@ -9,9 +9,6 @@ services:
     environment:
       - MONGO_INITDB_ROOT_USERNAME=root
       - MONGO_INITDB_ROOT_PASSWORD=${DATABASE_ROOT_PASSWORD:?}
-      - MONGO_INITDB_DATABASE=${DATABASE_NAME:?}
-      - MONGO_INITDB_USER=${DATABASE_USER:?}
-      - MONGO_INITDB_PWD=${DATABASE_PASSWORD:?}
     ports:
       - ${DATABASE_PORT:-27017}:27017
     restart: always
@@ -25,9 +22,7 @@ services:
       - mongoDb
     environment:
       DATABASE_HOST: mongoDb
-      DATABASE_NAME: ${DATABASE_NAME:?}
-      DATABASE_USER: ${DATABASE_USER:?}
-      DATABASE_PASSWORD: ${DATABASE_PASSWORD:?}
+      DATABASE_PASSWORD: ${DATABASE_ROOT_PASSWORD:?}
       DATABASE_PORT: 27017
       PORT_TO_SHOW: ${BACKEND_PORT:?}
     ports:
