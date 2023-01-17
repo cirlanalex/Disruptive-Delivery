@@ -9,6 +9,6 @@ const warehouseEmployee = new db.Schema({
         type: String,
         required: true
     }
-});
+}, { collection: 'warehouseEmployees', versionKey: false });
 
 module.exports = db.model('warehouseEmployee', warehouseEmployee);

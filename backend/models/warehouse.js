@@ -33,6 +33,6 @@ const warehouse = new db.Schema({
         type: Number,
         required: true
     }
-});
+}, { collection: 'warehouses', versionKey: false });
 
 module.exports = db.model('warehouse', warehouse);

@@ -8,25 +8,28 @@ if (process.env.NODE_ENV !== 'production') {
     env.config({path: './.env'});
 }
 
-const Company = require('./models/company');
-
 const PORT = process.env.PORT || 3000;
 const HOST = process.env.HOST || "localhost";
 
 app.use(jsonParser);
 
-app.get('/', (req, res) => {
-    res.send('Hello World!');
-});
+const routeCallcenterOperator = require('./routes/routeCallcenterOperator');
+app.use('/callcenteroperators', routeCallcenterOperator);
+const routeCompany = require('./routes/routeCompany');
+app.use('/companies', routeCompany);
+const routeDriver = require('./routes/routeDriver');
+app.use('/drivers', routeDriver);
+const routeOrder = require('./routes/routeOrder');
+app.use('/orders', routeOrder);
+const routeUser = require('./routes/routeUser');
+app.use('/users', routeUser);
+const routeVehicle = require('./routes/routeVehicle');
+app.use('/vehicles', routeVehicle);
+const routeWarehouse = require('./routes/routeWarehouse');
+app.use('/warehouses', routeWarehouse);
+const routeWarehouseEmployee = require('./routes/routeWarehouseEmployee');
+app.use('/warehouseemployees', routeWarehouseEmployee);
 
-app.get('/companies', async (req, res) => {
-    try {
-        const company = await Company.find();
-        res.json(company);
-    } catch (err) {
-        res.status(500).send(err);
-    }
-});
 
 app.listen(PORT, HOST, () => {
     console.log('Backend server started!');

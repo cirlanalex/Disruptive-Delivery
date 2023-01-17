@@ -13,6 +13,6 @@ const company = new db.Schema({
         type: String,
         required: true
     }
-});
+}, { versionKey: false });
 
 module.exports = db.model('company', company);

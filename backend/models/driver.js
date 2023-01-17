@@ -9,4 +9,6 @@ const driver = new db.Schema({
         type: String,
         required: true
     }
-});
+}, { versionKey: false });
+
+module.exports = db.model('driver', driver);

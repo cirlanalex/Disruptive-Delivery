@@ -41,6 +41,6 @@ const vehicle = new db.Schema({
         type: Boolean,
         required: true
     }
-});
+}, { versionKey: false });
 
 module.exports = db.model('vehicle', vehicle);

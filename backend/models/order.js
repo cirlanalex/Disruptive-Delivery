@@ -101,6 +101,6 @@ const order = new db.Schema({
         type: String,
         required: true
     }
-});
+}, {versionKey: false});
 
 module.exports = db.model('order', order);

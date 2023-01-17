@@ -18,9 +18,9 @@ const user = new db.Schema({
         required: true
     },
     employee: {
-        type: boolean,
+        type: Boolean,
         required: true
     }
-});
+}, { versionKey: false });
 
 module.exports = db.model('user', user);
