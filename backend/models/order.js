@@ -50,7 +50,7 @@ const order = new db.Schema({
             type: String,
             required: true
         },
-        zip_code: {
+        zipcode: {
             type: String,
             required: true
         },
@@ -72,7 +72,7 @@ const order = new db.Schema({
             type: String,
             required: true
         },
-        zip_code: {
+        zipcode: {
             type: String,
             required: true
         },
@@ -89,17 +89,11 @@ const order = new db.Schema({
         type: String,
         required: true
     },
-    get_date: {
-        type: Date,
-        required: true
-    },
     driver_id: {
         type: String,
-        required: true
     },
     warehouse_id: {
         type: String,
-        required: true
     }
 }, {versionKey: false});
 

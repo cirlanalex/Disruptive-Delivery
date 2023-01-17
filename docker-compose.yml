@@ -27,3 +27,12 @@ services:
       PORT_TO_SHOW: ${BACKEND_PORT:?}
     ports:
       - ${BACKEND_PORT:?}:80
+
+  frontendDisruptive:
+    image: disruptive-delivry-frontend
+    build:
+      context: ./frontend
+    environment:
+      - BACKEND
+    ports:
+      - ${FRONTEND_PORT:?}:80

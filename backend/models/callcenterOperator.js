@@ -5,6 +5,6 @@ const callcenterOperator = new db.Schema({
         type: String,
         required: true
     }
-}, { collection: 'callcenterOperator', versionKey: false });
+}, { versionKey: false });
 
 module.exports = db.model('callcenterOperator', callcenterOperator);

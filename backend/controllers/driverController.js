@@ -70,10 +70,6 @@ const updateDriver = async (req, res) => {
         if (req.params.id.length !== 24) {
             return res.status(400).json({message: 'The id needs to be 24 characters long.'});
         }
-        let requiredMsg = requiredChecks(req.body);
-        if (requiredMsg !== 'ok') {
-            return res.status(400).json({message: requiredMsg});
-        }
         let validateMsg = validateChecks(req.body);
         if (validateMsg !== 'ok') {
             return res.status(400).json({message: validateMsg});
@@ -82,8 +78,8 @@ const updateDriver = async (req, res) => {
         if (!driver) {
             return res.status(404).json({message: 'The driver with the given ID was not found.'});
         }
-        driver.user_id = req.body.user_id;
-        driver.vehicle_id = req.body.vehicle_id;
+        driver.user_id = req.body.user_id ?? driver.user_id;
+        driver.vehicle_id = req.body.vehicle_id ?? driver.vehicle_id;
         driver.save();
         res.status(200).json(driver);
     } catch (err) {
@@ -100,7 +96,7 @@ const deleteDriver = async (req, res) => {
         if (!driver) {
             return res.status(404).json({message: 'The driver with the given ID was not found.'});
         }
-        res.status(200).json(driver);
+        res.status(200).json({message: 'The driver was deleted.'});
     } catch (err) {
         res.status(500).json({message: err.message});
     }

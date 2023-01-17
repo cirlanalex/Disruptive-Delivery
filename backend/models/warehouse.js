@@ -21,6 +21,10 @@ const warehouse = new db.Schema({
         type: Number,
         required: true
     },
+    capacity_used: {
+        type: Number,
+        required: true
+    },
     x_in_m: {
         type: Number,
         required: true
@@ -33,6 +37,6 @@ const warehouse = new db.Schema({
         type: Number,
         required: true
     }
-}, { collection: 'warehouses', versionKey: false });
+}, { versionKey: false });
 
 module.exports = db.model('warehouse', warehouse);

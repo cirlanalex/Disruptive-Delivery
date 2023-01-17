@@ -20,6 +20,9 @@ const user = new db.Schema({
     employee: {
         type: Boolean,
         required: true
+    }, 
+    employee_type: {
+        type: String
     }
 }, { versionKey: false });
 

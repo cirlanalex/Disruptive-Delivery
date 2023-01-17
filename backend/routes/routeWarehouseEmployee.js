@@ -1,15 +1,14 @@
-const warehouseWorkerController = require('../controllers/warehouseEmployeeController');
+const warehouseEmployeeController = require('../controllers/warehouseEmployeeController');
 const express = require('express');
-
 let router = express.Router();
 
 router.route('/')
-    .get(warehouseWorkerController.getWarehouses)
-    .post(warehouseWorkerController.createWarehouse);
+    .get(warehouseEmployeeController.getWarehouseEmployees)
+    .post(warehouseEmployeeController.createWarehouseEmployee);
 
 router.route('/:id')
-    .get(warehouseWorkerController.getWarehouse)
-    .put(warehouseWorkerController.updateWarehouse)
-    .delete(warehouseWorkerController.deleteWarehouse);
+    .get(warehouseEmployeeController.getWarehouseEmployee)
+    .put(warehouseEmployeeController.updateWarehouseEmployee)
+    .delete(warehouseEmployeeController.deleteWarehouseEmployee);
 
 module.exports = router;

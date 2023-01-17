@@ -43,11 +43,11 @@ const getCallcenterOperator = async (req, res) => {
 
 const createCallcenterOperator = async (req, res) => {
     try {
-        let requiredMsg = requiredChecks();
+        let requiredMsg = requiredChecks(req.body);
         if (requiredMsg !== 'ok') {
             return res.status(400).json({message: requiredMsg});
         }
-        let validateMsg = validateChecks();
+        let validateMsg = validateChecks(req.body);
         if (validateMsg !== 'ok') {
             return res.status(400).json({message: validateMsg});
         }
@@ -69,7 +69,7 @@ const updateCallcenterOperator = async (req, res) => {
         if (!callcenterOperator) {
             return res.status(404).json({message: 'The callcenter operator with the given ID was not found.'});
         }
-        callcenterOperator.user_id = req.body.user_id;
+        callcenterOperator.user_id = req.body.user_id ?? callcenterOperator.user_id;
         callcenterOperator.save();
         res.status(200).json(callcenterOperator);
     } catch (err) {
