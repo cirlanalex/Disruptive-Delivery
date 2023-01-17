@@ -14,7 +14,7 @@ services:
     restart: always
       
 
-  backend:
+  backendDisruptive:
     image: disruptive-delivry-backend
     build:
       context: ./backend
