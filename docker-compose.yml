@@ -15,7 +15,7 @@ services:
       
 
   backendDisruptive:
-    image: disruptive-delivry-backend
+    image: disruptive-delivery-backend
     build:
       context: ./backend
     depends_on:
@@ -29,7 +29,7 @@ services:
       - ${BACKEND_PORT:?}:80
 
   frontendDisruptive:
-    image: disruptive-delivry-frontend
+    image: disruptive-delievry-frontend
     build:
       context: ./frontend
     environment:

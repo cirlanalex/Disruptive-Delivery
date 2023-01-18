@@ -69,8 +69,8 @@ function validateChecks(body) {
         if (!body.employee_type) {
             return 'The employee type is required if you set employee to true';
         }
-        if (body.employee_type && (body.employee_type !== 'driver' && body.employee_type !== 'warehouseEmployee' && body.employee_type !== 'callcenterOperator')) {
-            return 'The employee type must be driver, warehouseEmployee or callcenterOperator.';
+        if (body.employee_type && (body.employee_type !== 'driver' && body.employee_type !== 'warehouseEmployee' && body.employee_type !== 'callcenterOperator' && body.employee_type !== 'manager')) {
+            return 'The employee type must be driver, warehouseEmployee, callcenterOperator or manager.';
         }
         if (body.employee_type === 'driver') {
             if (!body.vehicle_id) {
@@ -190,4 +190,16 @@ const deleteUser = async (req, res) => {
     }
 }
 
-module.exports = { getUsers, getUser, createUser, updateUser, deleteUser };
+const login = async (req, res) => {
+    try {
+        const user = await userModel.findOne({email: req.params.email});
+        if (!user) {
+            return res.status(400).json({message: 'Invalid email.'});
+        }
+        res.status(200).json({password: user.password, employee_type: user.employee_type, id: user._id});
+    } catch (err) {
+        res.status(500).json({message: err.message});
+    }
+}
+
+module.exports = { getUsers, getUser, createUser, updateUser, deleteUser, login };
