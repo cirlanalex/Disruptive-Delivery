@@ -1,6 +1,6 @@
 db = db.getSiblingDB('disruptive');
 
-db.createCollection('callcenterOperator');
+db.createCollection('callcenterOperators');
 db.createCollection('companies');
 db.createCollection('drivers');
 db.createCollection('orders');
@@ -9,7 +9,7 @@ db.createCollection('vehicles');
 db.createCollection('warehouseEmployees');
 db.createCollection('warehouses');
 
-db.callcenterOperator.insertMany([
+db.callcenterOperators.insertMany([
   {
     "user_id": "63c59cba906cd41642733357"
   }
